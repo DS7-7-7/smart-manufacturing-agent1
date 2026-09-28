@@ -1,0 +1,6 @@
+Machine
+  hasModelName: xsd:string
+  hasOperatingHours: xsd:float
+Sensor
+  hasSamplingRate: xsd:integer
+  hasLastCalibratedAt: xsd:dateTime

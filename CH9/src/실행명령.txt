@@ -1,0 +1,7 @@
+cd /스마트제조_AI_Agent_교제코드/CH9/src
+
+#LLM 없이 검증 명령어
+python compare.py --no-llm
+
+python compare.py                 # LLM_BACKEND 기본 ollama
+OLLAMA_MODEL=qwen2.5:7b python compare.py

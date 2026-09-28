@@ -1,0 +1,24 @@
+#gpt 사용시
+export 
+
+# 2.5:7b 사용시 
+
+cd /home/a202192012/5.Agent_System/프로젝트/스마트제조_AI_Agent_교제코드/CH8/src
+conda activate ai_agnet 
+OLLAMA_MODEL=qwen2.5:7b python extract.py
+
+#더 큰 모델 사용 
+OLLAMA_MODEL=qwen2.5:32b python extract.py
+
+
+
+#지식그래프 시각화 
+python3 build_graph.py                 # graph_full.png + factory.cypher 생성
+python3 build_graph.py --push \\
+      --uri bolt://localhost:7687 --user neo4j --password <pw>   # 실 DB 적재(선택)
+
+# 필요한 패키지
+pip install neo4j python-dotenv
+
+#neo4j 저장 
+python3 build_graph.py --push

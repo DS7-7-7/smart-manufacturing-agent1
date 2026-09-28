@@ -1,0 +1,13 @@
+#Ollama 설치방법
+Linux 
+
+
+
+#모델 준비 (최초 1회)
+bash
+ollama pull qwen3:8b        # 모델 다운로드
+ollama list                 # 받은 모델 목록 확인
+ollama show qwen3:8b        # tools 지원 확인
+교재 코드 실행 (이게 지금 필요하신 것 같네요)
+
+

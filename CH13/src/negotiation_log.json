@@ -1,0 +1,304 @@
+[
+  {
+    "agent": "production_planner",
+    "message": {
+      "sender": "production_planner",
+      "turn": 1,
+      "message_type": "proposal",
+      "schedule": [
+        {
+          "order_id": "ORD-005",
+          "product": "WidgetB",
+          "quantity": 50,
+          "start_date": "2026-09-21",
+          "end_date": "2026-09-25"
+        },
+        {
+          "order_id": "ORD-001",
+          "product": "WidgetA",
+          "quantity": 120,
+          "start_date": "2026-09-22",
+          "end_date": "2026-09-28"
+        },
+        {
+          "order_id": "ORD-002",
+          "product": "WidgetB",
+          "quantity": 100,
+          "start_date": "2026-09-23",
+          "end_date": "2026-09-28"
+        },
+        {
+          "order_id": "ORD-004",
+          "product": "WidgetA",
+          "quantity": 80,
+          "start_date": "2026-09-25",
+          "end_date": "2026-09-29"
+        },
+        {
+          "order_id": "ORD-003",
+          "product": "WidgetC",
+          "quantity": 60,
+          "start_date": "2026-09-26",
+          "end_date": "2026-10-01"
+        }
+      ],
+      "adjustments": [
+        "ORD-005를 먼저 시작하여 납기를 맞추었습니다.",
+        "ORD-001, ORD-002, ORD-004, ORD-003의 시작일을 조정하여 생산능력을 고려하였습니다."
+      ],
+      "comment": "현재 자재 재고를 고려하여 최대한 많은 주문을 만족시키기 위해 생산 순서를 조정하였습니다. 자재의 부족 여부 및 조달 필요성을 확인해 주세요."
+    },
+    "tool_result": null
+  },
+  {
+    "agent": "material_procurement",
+    "message": {
+      "sender": "material_procurement",
+      "turn": 1,
+      "message_type": "counter_proposal",
+      "schedule": [
+        {
+          "order_id": "ORD-005",
+          "product": "WidgetB",
+          "quantity": 50,
+          "start_date": "2026-09-21",
+          "end_date": "2026-09-25"
+        },
+        {
+          "order_id": "ORD-001",
+          "product": "WidgetA",
+          "quantity": 120,
+          "start_date": "2026-09-22",
+          "end_date": "2026-09-28"
+        },
+        {
+          "order_id": "ORD-002",
+          "product": "WidgetB",
+          "quantity": 100,
+          "start_date": "2026-09-23",
+          "end_date": "2026-09-28"
+        },
+        {
+          "order_id": "ORD-004",
+          "product": "WidgetA",
+          "quantity": 80,
+          "start_date": "2026-09-25",
+          "end_date": "2026-09-29"
+        },
+        {
+          "order_id": "ORD-003",
+          "product": "WidgetC",
+          "quantity": 60,
+          "start_date": "2026-09-26",
+          "end_date": "2026-10-01"
+        }
+      ],
+      "adjustments": [
+        "자재 부족으로 인해 생산 스케줄 조정 필요"
+      ],
+      "comment": "자재 부족으로 인해 생산 계획을 조정해야 합니다. 철강 원자재, 제어 칩, 외장 케이스가 각각 330kg, 310개, 290개 부족합니다. 외장 케이스는 SUP-CASE-1로부터 120개를 2026-09-25까지 조달 가능하며, 제어 칩은 SUP-CHIP-1로부터 100개를 2026-09-28까지 조달 가능합니다. 철강 원자재는 SUP-STEEL-2로부터 60kg을 2026-09-23까지, SUP-STEEL-1로부터 150kg을 2026-09-26까지 조달 가능합니다. 부족한 자재를 조달하기 위한 조정이 필요합니다."
+    },
+    "tool_result": {
+      "required_materials": {
+        "STEEL": 730.0,
+        "CHIP": 560.0,
+        "CASE": 470.0
+      },
+      "shortages": {
+        "STEEL": 330.0,
+        "CHIP": 310.0,
+        "CASE": 290.0
+      },
+      "procurement_options": [
+        {
+          "material_id": "CASE",
+          "supplier_id": "SUP-CASE-1",
+          "shortage_qty": 290.0,
+          "obtainable_qty": 120,
+          "remaining_after": 170.0,
+          "lead_time_days": 4,
+          "expected_arrival": "2026-09-25",
+          "unit_cost": 2.1
+        },
+        {
+          "material_id": "CHIP",
+          "supplier_id": "SUP-CHIP-1",
+          "shortage_qty": 310.0,
+          "obtainable_qty": 100,
+          "remaining_after": 210.0,
+          "lead_time_days": 7,
+          "expected_arrival": "2026-09-28",
+          "unit_cost": 12.0
+        },
+        {
+          "material_id": "STEEL",
+          "supplier_id": "SUP-STEEL-2",
+          "shortage_qty": 330.0,
+          "obtainable_qty": 60,
+          "remaining_after": 270.0,
+          "lead_time_days": 2,
+          "expected_arrival": "2026-09-23",
+          "unit_cost": 4.5
+        },
+        {
+          "material_id": "STEEL",
+          "supplier_id": "SUP-STEEL-1",
+          "shortage_qty": 330.0,
+          "obtainable_qty": 150,
+          "remaining_after": 180.0,
+          "lead_time_days": 5,
+          "expected_arrival": "2026-09-26",
+          "unit_cost": 3.2
+        }
+      ],
+      "capacity_violations": [],
+      "feasible": false
+    }
+  },
+  {
+    "agent": "production_planner",
+    "message": {
+      "sender": "production_planner",
+      "turn": 2,
+      "message_type": "counter_proposal",
+      "schedule": [
+        {
+          "order_id": "ORD-005",
+          "product": "WidgetB",
+          "quantity": 50,
+          "start_date": "2026-09-21",
+          "end_date": "2026-09-25"
+        },
+        {
+          "order_id": "ORD-001",
+          "product": "WidgetA",
+          "quantity": 120,
+          "start_date": "2026-09-26",
+          "end_date": "2026-09-30"
+        },
+        {
+          "order_id": "ORD-002",
+          "product": "WidgetB",
+          "quantity": 100,
+          "start_date": "2026-09-27",
+          "end_date": "2026-10-01"
+        },
+        {
+          "order_id": "ORD-004",
+          "product": "WidgetA",
+          "quantity": 80,
+          "start_date": "2026-09-28",
+          "end_date": "2026-10-02"
+        },
+        {
+          "order_id": "ORD-003",
+          "product": "WidgetC",
+          "quantity": 60,
+          "start_date": "2026-09-30",
+          "end_date": "2026-10-04"
+        }
+      ],
+      "adjustments": [
+        "ORD-001의 시작일을 2026-09-26로 변경하여 철강 원자재와 제어 칩의 조달 일정을 맞추었습니다.",
+        "ORD-002, ORD-004, ORD-003의 시작일을 뒤로 미루어 조달 가능한 자재 일정에 맞추었습니다."
+      ],
+      "comment": "자재 부족 문제를 해결하기 위해 생산 일정을 조정하였습니다. 철강 원자재와 제어 칩, 외장 케이스의 조달 일정에 맞추어 주문의 시작일을 변경하였고, 우선순위가 낮은 주문부터 조정하였습니다."
+    },
+    "tool_result": null
+  },
+  {
+    "agent": "orchestrator",
+    "message": {
+      "sender": "orchestrator",
+      "turn": 2,
+      "message_type": "forced_resolution",
+      "schedule": [
+        {
+          "order_id": "ORD-003",
+          "product": "WidgetC",
+          "quantity": 60,
+          "start_date": "2026-09-30",
+          "end_date": "2026-10-04"
+        },
+        {
+          "order_id": "ORD-002",
+          "product": "WidgetB",
+          "quantity": 100,
+          "start_date": "2026-09-27",
+          "end_date": "2026-10-01"
+        },
+        {
+          "order_id": "ORD-005",
+          "product": "WidgetB",
+          "quantity": 50,
+          "start_date": "2026-09-21",
+          "end_date": "2026-09-25"
+        },
+        {
+          "order_id": "ORD-001",
+          "product": "WidgetA",
+          "quantity": 120,
+          "start_date": "2026-09-26",
+          "end_date": "2026-09-30"
+        }
+      ],
+      "comment": "동일한 자재 부족이 반복되어 우선순위 기반 강제 조정 규칙을 적용했습니다."
+    },
+    "tool_result": {
+      "required_materials": {
+        "STEEL": 730.0,
+        "CHIP": 560.0,
+        "CASE": 470.0
+      },
+      "shortages": {
+        "STEEL": 330.0,
+        "CHIP": 310.0,
+        "CASE": 290.0
+      },
+      "procurement_options": [
+        {
+          "material_id": "CASE",
+          "supplier_id": "SUP-CASE-1",
+          "shortage_qty": 290.0,
+          "obtainable_qty": 120,
+          "remaining_after": 170.0,
+          "lead_time_days": 4,
+          "expected_arrival": "2026-09-25",
+          "unit_cost": 2.1
+        },
+        {
+          "material_id": "CHIP",
+          "supplier_id": "SUP-CHIP-1",
+          "shortage_qty": 310.0,
+          "obtainable_qty": 100,
+          "remaining_after": 210.0,
+          "lead_time_days": 7,
+          "expected_arrival": "2026-09-28",
+          "unit_cost": 12.0
+        },
+        {
+          "material_id": "STEEL",
+          "supplier_id": "SUP-STEEL-2",
+          "shortage_qty": 330.0,
+          "obtainable_qty": 60,
+          "remaining_after": 270.0,
+          "lead_time_days": 2,
+          "expected_arrival": "2026-09-23",
+          "unit_cost": 4.5
+        },
+        {
+          "material_id": "STEEL",
+          "supplier_id": "SUP-STEEL-1",
+          "shortage_qty": 330.0,
+          "obtainable_qty": 150,
+          "remaining_after": 180.0,
+          "lead_time_days": 5,
+          "expected_arrival": "2026-09-26",
+          "unit_cost": 3.2
+        }
+      ],
+      "capacity_violations": [],
+      "feasible": false
+    }
+  }
+]

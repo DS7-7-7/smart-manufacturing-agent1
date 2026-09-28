@@ -1,0 +1,39 @@
+전체 순서
+bash
+# 작업 폴더로 이동
+cd /home/a202192012/5.Agent_System/프로젝트/스마트제조_AI_Agent_교제코드/CH5/src
+
+① 데이터 재구성 (1회만)
+
+bash
+python3 build_dataset.py
+
+② 학습
+
+bash
+python3 train_screw.py --device cpu
+
+③ 평가 (test 10장 전체 정확도)
+
+bash
+python3 evaluate_screw.py --device cpu
+
+④ 예측 (이미지 한 장 판정)
+
+bash
+python3 predict_screw.py "/home/a202192012/5.Agent_System/프로젝트/스마트제조_AI_Agent_교제코드/CH5/data/screw/test/scratch_head/018.png" --device cpu
+
+만약 cd로 이동하기 싫고 어디서든 실행하고 싶다면, 파일 경로를 전부 풀어서 쓰면 됩니다.
+
+bash
+# ① 데이터 재구성
+python3 /home/a202192012/5.Agent_System/프로젝트/스마트제조_AI_Agent_교제코드/CH5/src/build_dataset.py
+
+# ② 학습
+python3 /home/a202192012/5.Agent_System/프로젝트/스마트제조_AI_Agent_교제코드/CH5/src/train_screw.py --device cpu
+
+# ③ 평가
+python3 /home/a202192012/5.Agent_System/프로젝트/스마트제조_AI_Agent_교제코드/CH5/src/evaluate_screw.py --device cpu
+
+# ④ 예측
+python3 /home/a202192012/5.Agent_System/프로젝트/스마트제조_AI_Agent_교제코드/CH5/src/predict_screw.py "/home/a202192012/5.Agent_System/프로젝트/스마트제조_AI_Agent_교제코드/CH5/data/screw/test/scratch_head/018.png" --device cpu
