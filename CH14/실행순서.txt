@@ -1,0 +1,31 @@
+python3 01_init_db.py    → erp.db 파일 + 11개 테이블 생성
+python3 02_seed_data.py  → 초기 데이터 입력 (내부에서 DB 자동 초기화)
+
+cd src
+
+# 1) DB 준비 (한 번만)
+python3 01_init_db.py       # data/erp.db 생성
+python3 02_seed_data.py     # 초기 데이터 입력
+
+# 2) Agent 실행 (mock = API 없이 실습)
+cd /home/a202192012/5.Agent_System/프로젝트/스마트제조_AI_Agent_교제코드/CH14/src
+LLM_BACKEND=qwen python3 09_run_agent.py              # 대화형 (Agent)
+LLM_BACKEND=qwen python3 09_run_agent.py --workflow   # LangGraph 워크플로
+
+# 3) 예외 처리 시연
+LLM_BACKEND=mock python3 10_exception_handler.py
+
+# 4) API 서비스
+LLM_BACKEND=mock uvicorn 11_api:app --reload --port 8000
+# → http://localhost:8000/docs 에서 테스트
+
+
+LM 모델 전환 (회원님 GraphQA 패턴 그대로)
+
+백엔드	설정	용도
+mock	LLM_BACKEND=mock	API 없이 규칙 기반, 실습·테스트
+qwen	LLM_BACKEND=qwen	로컬 vLLM (localhost:8001/v1)
+gpt	LLM_BACKEND=gpt + OPENAI_API_KEY	OpenAI API
+
+cd src
+LLM_BACKEND=qwen python3 10_exception_handler.py
