@@ -1,0 +1,37 @@
+{
+  "P-2201": {
+    "name": "베어링 유닛 A형",
+    "stock": 12,
+    "threshold": 15,
+    "unit_price": 45000,
+    "supplier": "한국베어링공업"
+  },
+  "P-3105": {
+    "name": "냉각수 순환 펌프",
+    "stock": 3,
+    "threshold": 5,
+    "unit_price": 320000,
+    "supplier": "대한펌프"
+  },
+  "P-1042": {
+    "name": "컨베이어 벨트 (표준)",
+    "stock": 25,
+    "threshold": 10,
+    "unit_price": 180000,
+    "supplier": "성진산업"
+  },
+  "P-5501": {
+    "name": "온도 센서 (PT100)",
+    "stock": 48,
+    "threshold": 20,
+    "unit_price": 25000,
+    "supplier": "센텍코리아"
+  },
+  "P-2210": {
+    "name": "베어링 유닛 B형",
+    "stock": 8,
+    "threshold": 10,
+    "unit_price": 52000,
+    "supplier": "한국베어링공업"
+  }
+}

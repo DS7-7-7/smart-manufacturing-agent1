@@ -1,0 +1,36 @@
+{
+  "production_orders": [
+    {
+      "order_id": "WO-2025-1001",
+      "line": "3라인",
+      "product": "PXT-2000",
+      "target_qty": 500,
+      "completed_qty": 342,
+      "status": "in_progress",
+      "start_time": "2025-08-15 08:00"
+    },
+    {
+      "order_id": "WO-2025-1002",
+      "line": "5라인",
+      "product": "AXL-3300",
+      "target_qty": 300,
+      "completed_qty": 300,
+      "status": "completed",
+      "start_time": "2025-08-15 06:00"
+    },
+    {
+      "order_id": "WO-2025-1003",
+      "line": "2라인",
+      "product": "CVR-800",
+      "target_qty": 800,
+      "completed_qty": 0,
+      "status": "waiting",
+      "start_time": "2025-08-15 16:00"
+    }
+  ],
+  "equipment_status": {
+    "3라인": {"state": "running", "temperature": 78.5, "vibration": 0.32, "last_check": "2025-08-15 14:30"},
+    "5라인": {"state": "idle", "temperature": 24.0, "vibration": 0.0, "last_check": "2025-08-15 14:30"},
+    "2라인": {"state": "warming_up", "temperature": 45.2, "vibration": 0.15, "last_check": "2025-08-15 14:30"}
+  }
+}

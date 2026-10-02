@@ -1,0 +1,49 @@
+========================================
+CH6 실습 실행 명령
+========================================
+
+[사전 준비]
+- 상위 폴더(smart_manufacturing/)에 llm_client.py 가 있어야 한다.
+- .env 파일에 LLM_BACKEND=ollama, OLLAMA_MODEL=qwen2.5:7b 등이 설정되어 있어야 한다.
+- Ollama 사용 시 로컬에서 `ollama serve` 가 실행 중이어야 한다.
+
+[6.7 실습] LLM API 호출 기본 패턴
+------------------------------------------
+# 전체 3단계 실행
+python hello_llm.py
+
+# 특정 단계만 실행 (1=단순 호출, 2=역할 부여, 3=Temperature 실험)
+python3 hello_llm.py --step 1
+python3 hello_llm.py --step 2
+python3 hello_llm.py --step 3
+
+
+[6.8 실습] 야간 근무자 작업일지 표준 보고서 변환
+------------------------------------------
+# 전체 3단계 실행 (프롬프트 개선 과정 확인)
+python3 convert_worklog.py
+
+# 특정 단계만 실행 (1=단순, 2=System+형식, 3=Few-shot)
+python3 convert_worklog.py --step 1
+python3 convert_worklog.py --step 2
+python3 convert_worklog.py --step 3
+
+
+[6.9 실습] 결함 보고서 프롬프트 튜닝
+------------------------------------------
+# 전체 3단계 실행 (요약 → 구조화 → JSON 파싱)
+python3 tune_defect_prompt.py
+
+# 특정 단계만 실행
+python3 tune_defect_prompt.py --step 1
+python3 tune_defect_prompt.py --step 2
+python3 tune_defect_prompt.py --step 3
+
+
+[백엔드 전환]
+------------------------------------------
+# Ollama 대신 OpenAI 사용 시 .env 수정
+LLM_BACKEND=gpt
+OPENAI_API_KEY=sk-...
+
+# 코드 수정 없이 모든 실습이 그대로 동작한다.
